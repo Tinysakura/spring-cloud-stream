@@ -1,5 +1,7 @@
 package com.cfh.study.springcloudstream;
 
+import com.cfh.study.springcloudstream.custome.FallBackProcessor;
+import com.cfh.study.springcloudstream.fallback.FallBackSender;
 import com.cfh.study.springcloudstream.sender.FirstSender;
 import com.cfh.study.springcloudstream.sender.MySender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class controller {
     @Autowired
     MySender mySender;
 
+    @Autowired
+    FallBackSender fallBackSender;
+
     @RequestMapping("/send1")
     public void send1(){
         System.out.println("send message:mmp");
@@ -32,5 +37,10 @@ public class controller {
         me.setName("cfh");
         me.setAge("18");
         mySender.sendMy(me);
+    }
+
+    @RequestMapping("/sendWithFallback")
+    public void sendFallback(){
+        fallBackSender.send("小猪佩琪身上纹");
     }
 }

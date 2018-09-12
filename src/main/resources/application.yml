@@ -5,5 +5,10 @@ spring:
       bindings:
         inputMy:
           destination: myBinding
+          group: persistence #存放消息的队列持久化
         outputMy:
           destination: myBinding
+        fallbackInput:
+          detination: fallbackOutput
+        fallbackOutput:
+          destination: fallbackInput
