@@ -1,0 +1,9 @@
+#配置一个binding（对应rabbitmq中的Exchange)
+spring:
+  cloud:
+    stream:
+      bindings:
+        inputMy:
+          destination: myBinding
+        outputMy:
+          destination: myBinding
